@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
@@ -67,7 +67,7 @@ db.query(`CREATE TABLE IF NOT EXISTS appointments (
 app.post('/register', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcryptjs.hash(password, 10);
 
     const sql = 'INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)';
     db.query(sql, [firstName, lastName, email, hashedPassword], (err, result) => {
@@ -100,7 +100,7 @@ app.post('/login', async (req, res) => {
     }
 
     const user = results[0];
-    const passwordIsValid = await bcrypt.compare(password, user.password);
+    const passwordIsValid = await bcryptjs.compare(password, user.password);
 
     if (!passwordIsValid) {
       console.log('Invalid password');
