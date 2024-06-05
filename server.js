@@ -14,9 +14,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', // Enter your MySQL password if any
+  host: 'library-project-sriranjania2004-0677.a.aivencloud.com',
+  user: 'avnadmin',
+  password: 'AVNS_MFT-ZoJunIZRKw_BG8c', // Enter your MySQL password if any
   database: 'lawlink'
 });
 
