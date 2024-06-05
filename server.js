@@ -17,7 +17,8 @@ const db = mysql.createConnection({
   host: 'library-project-sriranjania2004-0677.a.aivencloud.com',
   user: 'avnadmin',
   password: 'AVNS_MFT-ZoJunIZRKw_BG8c', // Enter your MySQL password if any
-  database: 'lawlink'
+  database: 'lawlink',
+  port: '16947'
 });
 
 const transporter = nodemailer.createTransport({
